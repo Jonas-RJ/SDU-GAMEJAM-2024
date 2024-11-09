@@ -52,14 +52,15 @@ public class HealthController : MonoBehaviour
             if (other.CompareTag("Enemy"))
             {
                 takeDamage(1);
+            print("haiii :33");
             }
         }
 
-        private void takeDamage(int damage)
+        public void takeDamage(int damage)
         {
             _health = _health - damage;
           gameObject.GetComponent<HealthController>().UpdateHearts(_health);
-
+        print("Health Updated");
         }
 
     }

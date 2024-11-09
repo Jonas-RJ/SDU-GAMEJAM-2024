@@ -5,6 +5,9 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
 
+    public HealthController hc;
+
+
    [SerializeField] private float m_EnemySpeed;
     [SerializeField] private float m_ËnemyRotateSpeed;
 
@@ -73,5 +76,5 @@ public class EnemyMovement : MonoBehaviour
     }
 
 
-
+  
 }

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-
+    public HealthController hc;
+    [SerializeField] private float takeDamageCD;
     //nedenstående bool er tilgængelig til andre scripts, men kan kun sættes / defineres heri. 
     public bool _IsAware  { get; private set; }
     public Vector2 c_PlayerDirection {  get; private set; }
@@ -36,5 +37,21 @@ public class EnemyAI : MonoBehaviour
         }
 
 
+    }
+
+
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        takeDamageCD -= Time.deltaTime;
+
+        if (col.CompareTag("Player"))
+        {
+            if(takeDamageCD <= 0) { 
+            hc.takeDamage(1);
+            print("EnemyCol");
+                takeDamageCD = 0.5f;
+            }
+        }
     }
 }

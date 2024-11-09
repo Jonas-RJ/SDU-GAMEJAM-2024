@@ -16,13 +16,17 @@ public class Bullet : MonoBehaviour
 
 
     private void OnTriggerEnter2D(Collider2D Collision)
-    { 
+    {
+        //Destroy(Collision.gameObject);
+      //  Destroy(gameObject);
+
         /*
         if (Collision.GetComponent<>();)
         {
-         Destroy(Collision.gameObject);
-         Destroy(gameObject);
-       
+
+
+        }
+      
     */
     }
 

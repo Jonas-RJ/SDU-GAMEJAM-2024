@@ -9,7 +9,8 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private GameObject s_BulletPrefab;
     [SerializeField] private float s_BulletSpeed;
     [SerializeField] private float s_TimeBtwnShots;
-    
+
+    private bool s_SingleFire;
     private bool s_FireContinue;
     private float s_LastShot;
    [SerializeField] private Transform s_ShootingOffset;
@@ -22,7 +23,7 @@ public class PlayerShoot : MonoBehaviour
     {
 
         //hvis continuous fire er true, skyd. 
-        if (s_FireContinue)
+        if (s_FireContinue || s_SingleFire)
         {
 
             float timeSinceLastfire = Time.time - s_LastShot;
@@ -33,6 +34,7 @@ public class PlayerShoot : MonoBehaviour
                 FireBullet();
 
                 s_LastShot = Time.time;
+                s_SingleFire = false;
             }
             
         }
@@ -43,6 +45,11 @@ public class PlayerShoot : MonoBehaviour
     {
         // så længe OnFire (space, LMB, right trigger, osv. er pressed, sæt firecontinue til true.
         s_FireContinue = inputValue.isPressed;
+
+        if (inputValue.isPressed)
+        {
+         s_SingleFire = true;
+        }
     }
 
     private void FireBullet()

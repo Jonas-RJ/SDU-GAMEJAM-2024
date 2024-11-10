@@ -5,41 +5,45 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-   [SerializeField] private float b_BulletLifeTime;
-    
+    [Range(1, 100)]
+    [SerializeField] private float speed = 10f;
 
-    private void Awake()
+    [Range(1, 10)]
+    [SerializeField] private float lifeTime = 3f;
+
+    public HealthController hc;
+    private Rigidbody2D rb;
+
+    public bool damageCounter;
+    private void Start()
     {
-        StartCoroutine(bulletDestroyRoutine());
-
+        rb = GetComponent<Rigidbody2D>();
+        Destroy(gameObject, lifeTime);
+        damageCounter = false;
     }
 
+
+    private void FixedUpdate()
+    {
+        rb.velocity = transform.up * speed;
+        print (damageCounter);
+    }
 
     private void OnTriggerEnter2D(Collider2D Collision)
     {
-        //Destroy(Collision.gameObject);
-      //  Destroy(gameObject);
-
-        /*
-        if (Collision.GetComponent<>();)
+        if (Collision.CompareTag("Player"))
         {
-
-
+            hc = Collision.GetComponent<HealthController>();
+            hc.takeDamage(2);
+            damageCounter = true;
+            print(damageCounter);
+            Invoke("destroyBullet", 0.01f);        
         }
-      
-    */
     }
 
-
-
-    IEnumerator bulletDestroyRoutine()
+    private void destroyBullet()
     {
-        print("Bullet shot");
-
-        yield return new WaitForSeconds(b_BulletLifeTime);
-
         Destroy(gameObject);
-
-
     }
+
 }

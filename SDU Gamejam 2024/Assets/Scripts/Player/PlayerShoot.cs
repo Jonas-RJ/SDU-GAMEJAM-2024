@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerShoot : MonoBehaviour
 {
-
+    public ScreenShake ScS;
     [SerializeField] private GameObject s_BulletPrefab;
     [SerializeField] private float s_BulletSpeed;
     [SerializeField] private float s_TimeBtwnShots;
@@ -31,6 +31,8 @@ public class PlayerShoot : MonoBehaviour
 
             if(timeSinceLastfire >= s_TimeBtwnShots)
             {
+                ScS.StartCoroutine(ScS.Shaking());
+
                 FireBullet();
 
                 s_LastShot = Time.time;

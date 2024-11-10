@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class EnemyPatrolMovement : MonoBehaviour
 {
+    /*
+    Vector2 walkPoint;
+    private bool walkPointSet;
+    [SerializeField] private float WalkPntRange;
+*/
+
 
     [SerializeField] private float p_EnemySpeed;
-    [SerializeField] private float p_ËnemyRotateSpeed;
+    [SerializeField] private float p_EnemyRotateSpeed;
     [SerializeField] private float p_DirChangeCD;
 
     private Rigidbody2D p_rb;
@@ -24,6 +30,8 @@ public class EnemyPatrolMovement : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
+
+      //  if (!p_enemyAI._IsAware) { Patrolling(); }
         UpdateTargetDirection();
         RotateToTarget();
         SetVelocity();
@@ -42,7 +50,7 @@ public class EnemyPatrolMovement : MonoBehaviour
     {
        
         Quaternion targetRotation = Quaternion.LookRotation(transform.forward, p_TargetDirection);
-        Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, p_ËnemyRotateSpeed * Time.deltaTime);
+        Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, p_EnemyRotateSpeed * Time.deltaTime);
 
         p_rb.SetRotation(rotation);
 
@@ -51,10 +59,7 @@ public class EnemyPatrolMovement : MonoBehaviour
 
     private void SetVelocity()
     {
-       
             p_rb.velocity = transform.up * p_EnemySpeed;
-        
-
     }
 
     private void RandomDirChange()
@@ -72,6 +77,37 @@ public class EnemyPatrolMovement : MonoBehaviour
         }
     }
 
+/*
+    private void Patrolling()
+    {
+        if (!walkPointSet)
+        {
+            FindWalkPoint();
+        }
+        if (walkPointSet) 
+        {
+            p_TargetDirection = walkPoint;
+
+            Invoke("dirReset", 5f);
+        }
+    }
+
+    private void dirReset()
+    {
+        walkPointSet = false;
+    }
+
+    private void FindWalkPoint()
+    {
+        float randomX = Random.Range(-WalkPntRange, WalkPntRange);
+        float randomY = Random.Range(-WalkPntRange, WalkPntRange);
+
+        walkPoint = new Vector2(transform.position.x + randomX, transform.position.y + randomY);
+        walkPointSet = true;
+        print("new path found");
+    }
+
+    */
     private void playerTargeting()
     {
         if (p_enemyAI._IsAware)

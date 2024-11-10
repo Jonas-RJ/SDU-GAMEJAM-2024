@@ -95,9 +95,9 @@ GameObject:
   - component: {fileID: 3857230623640605613}
   - component: {fileID: 4299865537457413800}
   - component: {fileID: 4507676172875731423}
-  - component: {fileID: 7796149574247845131}
   - component: {fileID: -5775268975308468153}
   - component: {fileID: 8367009959871508101}
+  - component: {fileID: 8950628838441028005}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -183,19 +183,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0.006003827, y: -0.006004125}
   m_Size: {x: 1.040406, y: 2.0491643}
   m_Direction: 0
---- !u!114 &7796149574247845131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5000560729914195838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ed1ad4f13a24c445a1ad9597c32a5f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  b_BulletLifeTime: 1.5
 --- !u!108 &-5775268975308468153
 Light:
   m_ObjectHideFlags: 0
@@ -281,3 +268,16 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!114 &8950628838441028005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5000560729914195838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 822a7465cf4e11a4ca1a45d5170619c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 3

@@ -15,6 +15,7 @@ public class HealthController : MonoBehaviour
     public Image Heart2;
 
 
+    public Bullet bulletScript;
 
     // Start is called before the first frame update
     void Start()
@@ -41,13 +42,21 @@ public class HealthController : MonoBehaviour
     }
     void Update()
     {
+        if (bulletScript.damageCounter == true)
+        {
+            print("selvmord");
+            takeDamage(2);
+        }
+        {
+            
+        }
         if (_health <= 0)
         {
 
         }
     }
 
-    private void OnTriggerEnter2d(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Enemy"))
             {

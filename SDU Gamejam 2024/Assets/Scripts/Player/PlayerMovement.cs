@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
 
+    public HealthController hc;
 
     [SerializeField] float m_MoveSpeed;
     [SerializeField] float m_RotateSpeed;
@@ -62,4 +63,12 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    void OnCollisionEnter2D(Collision2D Other)
+    {
+        if (Other.gameObject.CompareTag("EnemyBullet"))
+        {
+            print("damage taken");
+            hc.takeDamage(2);
+        }
+    }
 }
